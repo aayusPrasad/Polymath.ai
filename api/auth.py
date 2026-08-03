@@ -1,13 +1,4 @@
-"""
-api/auth.py
-─────────────────────────────────────────────────────────────────────────────
-Polymath.ai — Phase 4: API Key Authentication
 
-Provides a FastAPI dependency that verifies the X-API-Key header against
-the POLYMATH_API_KEY environment variable. If the env var is not set, the
-API defaults to open access (useful for local development).
-─────────────────────────────────────────────────────────────────────────────
-"""
 
 import os
 import logging
