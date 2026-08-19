@@ -1,0 +1,37 @@
+# ─────────────────────────────────────────────
+#  Polymath.ai — Phase 1 Dependencies
+#  Python 3.11+
+# ─────────────────────────────────────────────
+
+# Core LangChain framework
+langchain>=0.3.0,<0.4.0
+
+# LangChain community integrations (PyMuPDFLoader, ChromaDB)
+langchain-community>=0.3.0,<0.4.0
+
+# LangChain Google Generative AI integration (Embeddings)
+langchain-google-genai>=2.0.0,<3.0.0
+
+# PDF parsing backend for PyMuPDFLoader
+pymupdf>=1.24.0,<2.0.0
+
+# Vector store — local, persistent, no server required
+chromadb>=0.5.0,<0.6.0
+
+# Google Generative AI SDK (transitive, pinned for stability)
+google-generativeai>=0.8.0,<1.0.0
+
+# LangChain core primitives (LCEL, runnables, output parsers) — Phase 2
+langchain-core>=0.3.0,<0.4.0
+
+# LangGraph — multi-agent orchestration via StateGraph — Phase 3
+langgraph>=0.2.0,<1.0.0
+
+# API Layer — Phase 4
+fastapi>=0.110.0,<1.0.0
+uvicorn>=0.29.0,<1.0.0
+pydantic>=2.0.0
+python-multipart>=0.0.9
+
+# Environment variable management
+python-dotenv>=1.0.0,<2.0.0
