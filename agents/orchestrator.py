@@ -99,11 +99,9 @@ def _load_vector_store(api_key: str):
     from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
     chroma_path = Path(CHROMA_PERSIST_DIR).resolve()
-    if not chroma_path.exists() or not chroma_path.is_dir():
-        raise FileNotFoundError(
-            f"ChromaDB directory not found: {chroma_path}\n"
-            "Run ingestion_pipeline.py first to populate the vector store."
-        )
+    if not chroma_path.exists():
+        log.info("Creating empty ChromaDB directory at: %s", chroma_path)
+        chroma_path.mkdir(parents=True, exist_ok=True)
 
     log.info("Loading vector store from: %s", chroma_path)
 
@@ -120,12 +118,11 @@ def _load_vector_store(api_key: str):
 
     doc_count = vector_store._collection.count()
     if doc_count == 0:
-        raise ValueError(
-            "ChromaDB collection is empty. Re-run ingestion_pipeline.py to populate it."
-        )
-
-    log.info("✓ Vector store ready — %d chunks available", doc_count)
+        log.warning("ChromaDB collection is empty. Please upload documents to populate the vector store.")
+    else:
+        log.info("✓ Vector store ready — %d chunks available", doc_count)
     return vector_store
+
 
 
 # ─────────────────────────────────────────────────────────────────────────────
